@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="sl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>eAsistent - Prijava</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				--poudarek: #3b5bf0;
+				margin: 0;
+				font-family: 'Segoe UI', Arial, sans-serif;
+				color: #2b3445;
+				background: #7db4f5 url('img/sola.webp') center top / cover no-repeat;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+			}
+			body.vrtci {
+				--poudarek: #fb9a3c;
+				background: #a6c9f7 url('img/vrtec.webp') center top / cover no-repeat;
+			}
+			.sr-only {
+				position: absolute;
+				left: -9999px;
+			}
+			.samo-vrtci {
+				display: none !important;
+			}
+			body.vrtci .samo-vrtci {
+				display: block !important;
+			}
+			body.vrtci .samo-vrtci.vrstica {
+				display: inline !important;
+			}
+			body.vrtci .samo-sole {
+				display: none !important;
+			}
+
+			/* Zgornja vrstica */
+			header {
+				background: #e2e2e2;
+				border-top: 5px solid var(--poudarek);
+				height: 88px;
+			}
+			.header-vsebina {
+				max-width: 1250px;
+				margin: 0 auto;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				gap: 40px;
+			}
+			.logo {
+				display: flex;
+				align-items: center;
+			}
+			.logo img {
+				height: 42px;
+				width: auto;
+				display: block;
+			}
+			nav ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				gap: 46px;
+			}
+			nav a {
+				color: #2b3445;
+				text-decoration: none;
+				font-size: 18px;
+			}
+			.gumbi-glava {
+				margin-left: auto;
+				display: flex;
+				gap: 12px;
+			}
+			.gumb-pilula {
+				border: 0;
+				border-radius: 24px;
+				padding: 12px 22px;
+				color: #fff;
+				font-size: 17px;
+				cursor: pointer;
+			}
+			.zelen {
+				background: #16a34a;
+			}
+			.temen {
+				background: #3b4558;
+			}
+
+			/* Vsebina */
+			main {
+				width: 100%;
+				max-width: 1250px;
+				margin: 0 auto;
+				padding: 30px 0;
+				flex: 1;
+				display: grid;
+				grid-template-columns: 1fr 400px;
+				gap: 32px;
+				align-items: start;
+				align-content: center;
+			}
+			.kartica {
+				background: rgba(235, 235, 235, 0.88);
+				border-radius: 22px;
+			}
+			.sporocilo {
+				padding: 90px 32px 60px;
+				min-height: 618px;
+			}
+			body.vrtci .sporocilo {
+				padding-top: 30px;
+				min-height: 610px;
+				background: rgba(228, 234, 242, 0.9);
+			}
+			.sporocilo h1 {
+				font-size: 34px;
+				margin: 0 0 40px;
+			}
+			.sporocilo h1 span {
+				color: var(--poudarek);
+			}
+			.sporocilo.vrtci-sporocilo h1 {
+				font-size: 32px;
+				line-height: 1.05;
+				margin-bottom: 26px;
+				color: #2f4a5e;
+				max-width: 420px;
+			}
+			.sporocilo p {
+				max-width: 350px;
+				font-size: 17px;
+				line-height: 1.6;
+				margin: 0 0 28px;
+			}
+			.vrtci-sporocilo p,
+			.vrtci-sporocilo ul {
+				max-width: 350px;
+				font-size: 16px;
+				line-height: 1.5;
+			}
+			.vrtci-sporocilo p {
+				margin-bottom: 16px;
+			}
+			.vrtci-sporocilo ul {
+				list-style: none;
+				padding: 0;
+				margin: 0 0 24px;
+			}
+			.vrtci-sporocilo li {
+				padding-left: 28px;
+				position: relative;
+				margin-bottom: 2px;
+			}
+			.vrtci-sporocilo li::before {
+				content: '\2713';
+				position: absolute;
+				left: 0;
+				top: 4px;
+				width: 17px;
+				height: 17px;
+				background: #3fbf6a;
+				color: #fff;
+				font-size: 13px;
+				line-height: 17px;
+				text-align: center;
+				border-radius: 3px;
+			}
+			.opomba {
+				font-size: 15px;
+				margin: 30px 0 0;
+			}
+			.modro {
+				color: var(--poudarek);
+				font-weight: 700;
+			}
+			.gumb-povezava {
+				display: inline-block;
+				background: #16a34a;
+				color: #fff;
+				text-decoration: none;
+				font-weight: 700;
+				font-size: 20px;
+				padding: 12px 20px;
+				border-radius: 10px;
+				margin: 0 4px 6px 0;
+			}
+
+			/* Desni stolpec */
+			aside {
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+			a.vprasanja {
+				display: flex;
+				align-items: center;
+				gap: 18px;
+				padding: 16px 14px;
+				font-weight: 700;
+				text-decoration: none;
+				color: inherit;
+			}
+			body.vrtci a.vprasanja.samo-vrtci {
+				display: flex !important;
+			}
+			.vprasanja .ikona {
+				width: 36px;
+				height: 36px;
+				border-radius: 50%;
+				background: #e0242a;
+				color: #fff;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 20px;
+				flex: none;
+			}
+			.vprasanja .ikona.video {
+				background: #b6efc8;
+				color: #1f6b3a;
+				font-size: 16px;
+			}
+			.vprasanja .puscica {
+				margin-left: auto;
+				color: #8a93a5;
+				font-weight: 400;
+			}
+
+			.prijava {
+				overflow: hidden;
+				padding-bottom: 20px;
+			}
+			.zavihki {
+				display: flex;
+			}
+			.zavihki button {
+				flex: 1;
+				border: 0;
+				padding: 14px;
+				font-size: 17px;
+				background: #dcdcdc;
+				color: #2b3445;
+				cursor: pointer;
+			}
+			.zavihki button.aktiven {
+				background: transparent;
+			}
+			.prijava form {
+				padding: 0 24px;
+			}
+			.prijava h2 {
+				font-size: 25px;
+				margin: 28px 0 14px;
+			}
+			.prijava input[type='email'],
+			.prijava input[type='text'],
+			.prijava input[type='password'] {
+				width: 100%;
+				height: 50px;
+				margin-bottom: 12px;
+				padding: 0 18px;
+				border: 1px solid #e3dc9c;
+				border-radius: 12px;
+				background: #f6efb1;
+				font-size: 17px;
+			}
+			.prijava .svetlo input[type='text'],
+			.prijava .svetlo input[type='password'] {
+				background: #f0f0f1;
+				border-color: #d9d9dc;
+			}
+			.prijava input[type='submit'] {
+				width: 100%;
+				height: 48px;
+				border: 0;
+				border-radius: 12px;
+				background: var(--poudarek);
+				color: #fff;
+				font-size: 17px;
+				cursor: pointer;
+				margin-top: 4px;
+			}
+			.prijava a {
+				color: var(--poudarek);
+				text-decoration: none;
+			}
+			.pozabljeno {
+				display: block;
+				margin: 18px 0 40px;
+			}
+			.alternativne {
+				text-align: center;
+				line-height: 2;
+			}
+			.mobilna {
+				text-align: center;
+				font-size: 14px;
+				margin-top: 28px;
+			}
+			.trgovini {
+				display: flex;
+				justify-content: center;
+				gap: 8px;
+				margin-top: 8px;
+			}
+			.trgovina {
+				background: #000;
+				color: #fff !important;
+				text-decoration: none;
+				border-radius: 6px;
+				padding: 6px 12px;
+				font-size: 14px;
+				font-weight: 600;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="header-vsebina">
+				<a class="logo" href="#"><img src="img/logo.webp" alt="eAsistent" /></a>
+				<nav>
+					<ul>
+						<li><a href="#" data-zavihek="sole">Šole</a></li>
+						<li><a href="#" data-zavihek="vrtci">Vrtci</a></li>
+						<li><a href="#">Projekti</a></li>
+						<li><a href="#">O nas</a></li>
+					</ul>
+				</nav>
+				<div class="gumbi-glava">
+					<button type="button" class="gumb-pilula zelen">
+						Vpis kode &#9662;
+					</button>
+					<button type="button" class="gumb-pilula temen">
+						Prijava &#9662;
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<!-- Zavihek Šole -->
+			<section class="kartica sporocilo samo-sole">
+				<h1>Vaše mnenje <span>šteje</span></h1>
+				<p>
+					Učitelji, starši, dijaki.
+					<strong
+						>Pomagajte nam ustvariti eAsistent po
+						<span class="modro">vaši meri.</span></strong
+					>
+				</p>
+				<p>
+					Občasno vam bomo pokazali nove ideje in prototipe ter prisluhnili
+					vašim predlogom, kaj pogrešate in kaj bi vam lahko še bolj olajšalo
+					uporabo eAsistenta.
+				</p>
+				<p>Sodelujete takrat, ko želite.</p>
+				<a class="gumb-povezava" href="#">Zaposleni na šoli &rarr;</a><br />
+				<a class="gumb-povezava" href="#">Starši &rarr;</a>
+				<a class="gumb-povezava" href="#">Dijaki &rarr;</a>
+			</section>
+
+			<!-- Zavihek Vrtci -->
+			<section class="kartica sporocilo vrtci-sporocilo samo-vrtci">
+				<h1>Poletje se poslavlja, prihaja čas za jesensko ustvarjanje!</h1>
+				<p>Prehod v jesen si popestrite z Medvedkovim svetom, ki vam nudi:</p>
+				<ul>
+					<li>
+						več kot <strong>100 ustvarjalnih idej</strong> za male umetnike in
+						prihajajoče hladnejše dni.
+					</li>
+					<li>
+						več kot <strong>470 idej za izlete</strong>, da ujamete še zadnje
+						tople sončne žarke.
+					</li>
+					<li>
+						več kot <strong>230 receptov</strong> za jesensko kuhanje in peko z
+						otroki.
+					</li>
+				</ul>
+				<p>Za jesen, polno smeha in razvijanja novih spretnosti.</p>
+				<a class="gumb-povezava" href="#">Prijavi se in aktiviraj &rarr;</a>
+				<p class="opomba">*Storitev je na voljo, če jo omogoča vrtec.</p>
+			</section>
+
+			<aside>
+				<a class="kartica vprasanja samo-sole" href="#">
+					<span class="ikona">?</span>
+					Pogosta vprašanja staršev
+					<span class="puscica">&rsaquo;</span>
+				</a>
+				<a class="kartica vprasanja samo-vrtci" href="#">
+					<span class="ikona video">&#9654;</span>
+					Navodila za starše
+					<span class="puscica">&rsaquo;</span>
+				</a>
+
+				<section class="kartica prijava">
+					<div class="zavihki">
+						<button type="button" class="aktiven" data-zavihek="sole">
+							Šole
+						</button>
+						<button type="button" data-zavihek="vrtci">Vrtci</button>
+					</div>
+
+					<form class="samo-sole" action="#" method="get">
+						<h2>Prijava</h2>
+						<label class="sr-only" for="email">E-pošta</label>
+						<input
+							type="email"
+							id="email"
+							name="email"
+							placeholder="E-pošta"
+							required
+						/>
+						<label class="sr-only" for="geslo">Geslo</label>
+						<input
+							type="password"
+							id="geslo"
+							name="geslo"
+							placeholder="Geslo"
+							required
+						/>
+						<input type="submit" value="Prijavi se" />
+						<a class="pozabljeno" href="#">Pozabljeno geslo</a>
+						<div class="alternativne">
+							<a href="#">QR prijava</a><br />
+							<a href="#">Prijava v javnosti</a>
+						</div>
+					</form>
+
+					<form class="samo-vrtci svetlo" action="#" method="get">
+						<h2>Prijava</h2>
+						<label class="sr-only" for="uporabnik">Uporabniško ime</label>
+						<input
+							type="text"
+							id="uporabnik"
+							name="uporabnik"
+							placeholder="Uporabniško ime"
+							required
+						/>
+						<label class="sr-only" for="geslo-vrtci">Geslo</label>
+						<input
+							type="password"
+							id="geslo-vrtci"
+							name="geslo"
+							placeholder="Geslo"
+							required
+						/>
+						<input type="submit" value="Prijavi se" />
+						<a class="pozabljeno" href="#">Pozabljeno geslo</a>
+					</form>
+
+					<div class="mobilna">
+						Prenesite mobilno aplikacijo<span class="samo-vrtci vrstica">
+							za starše</span
+						>
+						<div class="trgovini">
+							<a class="trgovina" href="#">App Store</a>
+							<a class="trgovina" href="#">Google Play</a>
+						</div>
+					</div>
+				</section>
+			</aside>
+		</main>
+
+		<script>
+			function prikazi(zavihek) {
+				document.body.classList.toggle('vrtci', zavihek === 'vrtci');
+				document.querySelectorAll('.zavihki button').forEach(function (gumb) {
+					gumb.classList.toggle('aktiven', gumb.dataset.zavihek === zavihek);
+				});
+			}
+			document.querySelectorAll('[data-zavihek]').forEach(function (element) {
+				element.addEventListener('click', function (e) {
+					e.preventDefault();
+					prikazi(element.dataset.zavihek);
+				});
+			});
+		</script>
+	</body>
+</html>
