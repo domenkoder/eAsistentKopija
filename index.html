@@ -41,7 +41,7 @@
 
 			/* Zgornja vrstica */
 			header {
-				background: #e2e2e2;
+				background: #fff;
 				border-top: 5px solid var(--poudarek);
 				height: 88px;
 			}
@@ -73,6 +73,7 @@
 				color: #2b3445;
 				text-decoration: none;
 				font-size: 18px;
+				font-weight: 600;
 			}
 			.gumbi-glava {
 				margin-left: auto;
@@ -119,6 +120,20 @@
 				padding-top: 30px;
 				min-height: 610px;
 				background: rgba(228, 234, 242, 0.9);
+			}
+			.sporocilo-vsebina {
+				display: flex;
+				align-items: center;
+				gap: 24px;
+			}
+			.besedilo {
+				flex: 1 1 auto;
+			}
+			.ilustracija {
+				flex: none;
+				width: 340px;
+				max-width: 45%;
+				height: auto;
 			}
 			.sporocilo h1 {
 				font-size: 34px;
@@ -237,6 +252,7 @@
 			.prijava {
 				overflow: hidden;
 				padding-bottom: 20px;
+				background: rgba(255, 255, 255, 0.82);
 			}
 			.zavihki {
 				display: flex;
@@ -246,7 +262,7 @@
 				border: 0;
 				padding: 14px;
 				font-size: 17px;
-				background: #dcdcdc;
+				background: rgba(0, 0, 0, 0.06);
 				color: #2b3445;
 				cursor: pointer;
 			}
@@ -260,22 +276,16 @@
 				font-size: 25px;
 				margin: 28px 0 14px;
 			}
-			.prijava input[type='email'],
 			.prijava input[type='text'],
 			.prijava input[type='password'] {
 				width: 100%;
 				height: 50px;
 				margin-bottom: 12px;
 				padding: 0 18px;
-				border: 1px solid #e3dc9c;
+				border: 1px solid #d9d9dc;
 				border-radius: 12px;
-				background: #f6efb1;
+				background: #fff;
 				font-size: 17px;
-			}
-			.prijava .svetlo input[type='text'],
-			.prijava .svetlo input[type='password'] {
-				background: #f0f0f1;
-				border-color: #d9d9dc;
 			}
 			.prijava input[type='submit'] {
 				width: 100%;
@@ -291,6 +301,12 @@
 			.prijava a {
 				color: var(--poudarek);
 				text-decoration: none;
+			}
+			.stanje {
+				margin: 10px 0 0;
+				text-align: center;
+				color: #16a34a;
+				font-weight: 600;
 			}
 			.pozabljeno {
 				display: block;
@@ -348,46 +364,66 @@
 		<main>
 			<!-- Zavihek Šole -->
 			<section class="kartica sporocilo samo-sole">
-				<h1>Vaše mnenje <span>šteje</span></h1>
-				<p>
-					Učitelji, starši, dijaki.
-					<strong
-						>Pomagajte nam ustvariti eAsistent po
-						<span class="modro">vaši meri.</span></strong
-					>
-				</p>
-				<p>
-					Občasno vam bomo pokazali nove ideje in prototipe ter prisluhnili
-					vašim predlogom, kaj pogrešate in kaj bi vam lahko še bolj olajšalo
-					uporabo eAsistenta.
-				</p>
-				<p>Sodelujete takrat, ko želite.</p>
-				<a class="gumb-povezava" href="#">Zaposleni na šoli &rarr;</a><br />
-				<a class="gumb-povezava" href="#">Starši &rarr;</a>
-				<a class="gumb-povezava" href="#">Dijaki &rarr;</a>
+				<div class="sporocilo-vsebina">
+					<div class="besedilo">
+						<h1>Vaše mnenje <span>šteje</span></h1>
+						<p>
+							Učitelji, starši, dijaki.
+							<strong
+								>Pomagajte nam ustvariti eAsistent po
+								<span class="modro">vaši meri.</span></strong
+							>
+						</p>
+						<p>
+							Občasno vam bomo pokazali nove ideje in prototipe ter prisluhnili
+							vašim predlogom, kaj pogrešate in kaj bi vam lahko še bolj
+							olajšalo uporabo eAsistenta.
+						</p>
+						<p>Sodelujete takrat, ko želite.</p>
+						<a class="gumb-povezava" href="#">Zaposleni na šoli &rarr;</a><br />
+						<a class="gumb-povezava" href="#">Starši &rarr;</a>
+						<a class="gumb-povezava" href="#">Dijaki &rarr;</a>
+					</div>
+					<img
+						class="ilustracija"
+						src="img/slika1.webp"
+						alt="Učiteljica z otroki pred šolo"
+					/>
+				</div>
 			</section>
 
 			<!-- Zavihek Vrtci -->
 			<section class="kartica sporocilo vrtci-sporocilo samo-vrtci">
-				<h1>Poletje se poslavlja, prihaja čas za jesensko ustvarjanje!</h1>
-				<p>Prehod v jesen si popestrite z Medvedkovim svetom, ki vam nudi:</p>
-				<ul>
-					<li>
-						več kot <strong>100 ustvarjalnih idej</strong> za male umetnike in
-						prihajajoče hladnejše dni.
-					</li>
-					<li>
-						več kot <strong>470 idej za izlete</strong>, da ujamete še zadnje
-						tople sončne žarke.
-					</li>
-					<li>
-						več kot <strong>230 receptov</strong> za jesensko kuhanje in peko z
-						otroki.
-					</li>
-				</ul>
-				<p>Za jesen, polno smeha in razvijanja novih spretnosti.</p>
-				<a class="gumb-povezava" href="#">Prijavi se in aktiviraj &rarr;</a>
-				<p class="opomba">*Storitev je na voljo, če jo omogoča vrtec.</p>
+				<div class="sporocilo-vsebina">
+					<div class="besedilo">
+						<h1>Poletje se poslavlja, prihaja čas za jesensko ustvarjanje!</h1>
+						<p>
+							Prehod v jesen si popestrite z Medvedkovim svetom, ki vam nudi:
+						</p>
+						<ul>
+							<li>
+								več kot <strong>100 ustvarjalnih idej</strong> za male umetnike
+								in prihajajoče hladnejše dni.
+							</li>
+							<li>
+								več kot <strong>470 idej za izlete</strong>, da ujamete še
+								zadnje tople sončne žarke.
+							</li>
+							<li>
+								več kot <strong>230 receptov</strong> za jesensko kuhanje in
+								peko z otroki.
+							</li>
+						</ul>
+						<p>Za jesen, polno smeha in razvijanja novih spretnosti.</p>
+						<a class="gumb-povezava" href="#">Prijavi se in aktiviraj &rarr;</a>
+						<p class="opomba">*Storitev je na voljo, če jo omogoča vrtec.</p>
+					</div>
+					<img
+						class="ilustracija"
+						src="img/slika2.webp"
+						alt="Medvedek in aplikacija za vrtce"
+					/>
+				</div>
 			</section>
 
 			<aside>
@@ -412,12 +448,15 @@
 
 					<form class="samo-sole" action="#" method="get">
 						<h2>Prijava</h2>
-						<label class="sr-only" for="email">E-pošta</label>
+						<label class="sr-only" for="email"
+							>E-pošta ali uporabniško ime</label
+						>
 						<input
-							type="email"
+							type="text"
 							id="email"
 							name="email"
-							placeholder="E-pošta"
+							placeholder="E-pošta ali uporabniško ime"
+							autocomplete="username"
 							required
 						/>
 						<label class="sr-only" for="geslo">Geslo</label>
@@ -429,6 +468,7 @@
 							required
 						/>
 						<input type="submit" value="Prijavi se" />
+						<p class="stanje" role="status" hidden></p>
 						<a class="pozabljeno" href="#">Pozabljeno geslo</a>
 						<div class="alternativne">
 							<a href="#">QR prijava</a><br />
@@ -455,6 +495,7 @@
 							required
 						/>
 						<input type="submit" value="Prijavi se" />
+						<p class="stanje" role="status" hidden></p>
 						<a class="pozabljeno" href="#">Pozabljeno geslo</a>
 					</form>
 
@@ -482,6 +523,14 @@
 				element.addEventListener('click', function (e) {
 					e.preventDefault();
 					prikazi(element.dataset.zavihek);
+				});
+			});
+			document.querySelectorAll('.prijava form').forEach(function (obrazec) {
+				obrazec.addEventListener('submit', function (e) {
+					e.preventDefault();
+					var stanje = obrazec.querySelector('.stanje');
+					stanje.textContent = 'Prijava poslana.';
+					stanje.hidden = false;
 				});
 			});
 		</script>
