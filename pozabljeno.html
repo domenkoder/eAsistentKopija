@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="sl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Pozabljeno geslo – eAsistent</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body class="stran-pozabljeno">
+		<header>
+			<div class="header-vsebina">
+				<a class="logo" href="index.html">
+					<img src="img/logo.webp" alt="eAsistent" />
+				</a>
+				<div class="pozabljeno-glava">
+					<a href="#">▣ &nbsp; Šola</a>
+					<a href="#">♟ &nbsp; Starši</a>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<section class="pozabljeno-stran">
+				<div class="pozabljeno-vsebina">
+					<h1>Imate težave s prijavo?</h1>
+					<p>
+						Vpišite vaš e-mail ali uporabniško ime in si pošljite povezavo za
+						nastavitev novega gesla.
+					</p>
+					<form class="pozabljeno-obrazec" action="#" method="get">
+						<label for="pozabljeno-email">E-mail ali uporabniško ime:</label>
+						<input
+							type="text"
+							id="pozabljeno-email"
+							name="email"
+							placeholder="Vpišite vaš e-mail ali uporabniško ime"
+							autocomplete="username"
+							required
+						/>
+						<input
+							type="submit"
+							value="Pošlji povezavo za nastavitev novega gesla"
+						/>
+						<p class="pozabljeno-stanje" role="status" hidden></p>
+					</form>
+					<p class="kontakt">
+						Lahko nam pišete na
+						<a href="mailto:info@easistent.com">info@easistent.com</a>.
+					</p>
+				</div>
+			</section>
+		</main>
+
+		<footer class="pozabljeno-noga">
+			<div class="noga-vsebina">
+				<div>
+					<strong>eŠola, d.o.o.</strong>
+					<p>Cerkevna ulica 11<br />4290 Tržič</p>
+					<a href="#">Easistent.com</a>
+				</div>
+				<div>
+					<strong>Podpora uporabnikom</strong>
+					<p>
+						Pomoč za ustanove:
+						<a href="mailto:info@easistent.com">info@easistent.com</a><br />
+						Pomoč za starše:
+						<a href="mailto:starsi@easistent.com">starsi@easistent.com</a>
+					</p>
+				</div>
+			</div>
+			<div class="noga-povezave">
+				<span>&copy; 2026 eŠola</span>
+				<a href="#">Pogoji poslovanja</a>
+				<a href="#">Varstvo osebnih podatkov</a>
+				<a href="#">Piškotki</a>
+				<a href="#">Pogosta vprašanja</a>
+			</div>
+		</footer>
+
+		<script src="script.js"></script>
+	</body>
+</html>

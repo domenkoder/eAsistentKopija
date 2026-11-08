@@ -29,3 +29,13 @@ document.querySelectorAll('.prijava form').forEach(function (obrazec) {
 		});
 	});
 });
+
+var pozabljenoObrazec = document.querySelector('.pozabljeno-obrazec');
+if (pozabljenoObrazec) {
+	pozabljenoObrazec.addEventListener('submit', function (e) {
+		e.preventDefault();
+		var stanje = e.currentTarget.querySelector('.pozabljeno-stanje');
+		stanje.textContent = 'Povezava za nastavitev gesla je bila poslana.';
+		stanje.hidden = false;
+	});
+}
